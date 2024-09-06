@@ -17,30 +17,25 @@ export const getAllGames = (req, res) => {
 
 export const addGame = (req, res) => {
     let body = '';
-    req.on('data', chunk => {
-        body = body + chunk;
-    });
-    req.on('end', () => {
-        const parsedBody = JSON.parse(body);
-        if (!parsedBody.name || !parsedBody.description) {
+    body=req.body;
+        if (!body.name || !body.description) {
             res.writeHead(400, 'Invalid request!');
             res.end();
         }
         const newDocument = {
             uid: uuidv4(),
-            name: parsedBody.name,
-            description: parsedBody.description,
+            name: body.name,
+            description: body.description,
         };
         const existingGames = getGames();
         existingGames.push(newDocument);
         writeGames(existingGames);
         res.end();
         //console.log('Llego esto ',parsedBody.name);
-    });
 };
 
 export const deleteGame = (req, res) => {
-    const id = req.url.split('/')[2];
+    const id = req.params.gameid
     //console.log(id ==='');
 
     if (!id) {

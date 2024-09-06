@@ -5,13 +5,18 @@
     "description": "asd"
   },
   {
-    "uid": "103dd2ed-0920-4ebe-907c-1e810cd4315e",
-    "name": "Crash",
+    "uid": "e40ed1ff-6f9c-47e5-974a-7f12d2af3ada",
+    "name": "Tetris",
     "description": "asd"
   },
   {
-    "uid": "e40ed1ff-6f9c-47e5-974a-7f12d2af3ada",
-    "name": "Tetris",
+    "uid": "16a58c3d-a16e-4a94-a572-dee6f8d5f40a",
+    "name": "Sekiro",
+    "description": "asd"
+  },
+  {
+    "uid": "95d80182-53d5-4298-b47f-4d864e3cf6c6",
+    "name": "FIFA27",
     "description": "asd"
   }
 ]
