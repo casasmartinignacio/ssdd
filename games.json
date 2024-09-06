@@ -2,7 +2,7 @@
   {
     "uid": "47016e8a-b55b-4d9e-b90b-ffbf2b2efaa4",
     "name": "CS-GO",
-    "description": "Juego de armas"
+    "description": "Juego de armas totalmente acabado"
   },
   {
     "uid": "37249930-5736-4bd3-b599-92966b115345",
@@ -16,7 +16,7 @@
   },
   {
     "uid": "5d02b360-cc3f-4e59-b74f-0db48dc07638",
-    "name": "Maincraft",
+    "name": "Minecraft",
     "description": "Juego de cubos"
   }
 ]

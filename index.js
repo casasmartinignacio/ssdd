@@ -34,31 +34,47 @@ app.post('/games', (req, res) => {
     }
 })
 
-app.patch('/games', (req, res) => {
+app.get('/games/:uid', (req, res) => {
+    try {
+        const uid = req.params.uid;
+        const existingGames = getGames();
+        const buscado = existingGames.find((item) => {
+            return item.uid === uid
+        })
+        if (!buscado) {
+            res.status(404).send('Juego no encontrado');
+            return
+        }
+        res.send(buscado)
+    } catch (e) {
+        console.log('Error', e)
+        res.status(500).send("Error")
+    }
+});
+
+app.patch('/games/:uid', (req, res) => {
     try {
         // addGame(req, res)
-        const parsedBody = req.body;
-        if (!parsedBody.name || !parsedBody.description) {
-            res.status(400).send('Invalid request!!!!!')
-            return;
-        }
-        const newDocument = {
-            uid: parsedBody.uid,
-            name: parsedBody.name,
-            description: parsedBody.description
-        }
+        const uid = req.params.uid;
         const existingGames = getGames();
         const buscado = existingGames.findIndex((item) => {
-            return item.uid === newDocument.uid
+            return item.uid === uid
         })
-        console.log(buscado)
+
         if(buscado < 0){
             res.status(404).send('Ruta no encontrada');
             return
         }
+
+        const parsedBody = req.body;
+
+        if (!parsedBody.name && !parsedBody.description)
+            return res.status(400).send('Invalid request!!!!!')
+        
+        // Esto se hace porque en el body solo se agregan los elementos que se quieren cambiar
         const oldItem = existingGames[buscado];
         existingGames[buscado] = {
-            uid: parsedBody.uid,
+            uid: oldItem.uid,
             name: parsedBody.name || oldItem.name,
             description: parsedBody.description || oldItem.description
         }
