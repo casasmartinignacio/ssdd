@@ -1,0 +1,20 @@
+{
+  "name": "ssdd",
+  "version": "1.0.0",
+  "description": "CLONAR REPO\r git@github.com:casasmartinignacio/ssdd.git",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4",
+    "uuid": "^10.0.0"
+  }
+}
