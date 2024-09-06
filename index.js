@@ -1,26 +1,22 @@
 import http from "http";
 import { getAllGames, addGame } from "./games.controller.js";
 import url from "url";
+import express from "express";
+import bodyParser from "body-parser";
 //agregar un campo mas a los documentos, (autor), y el metodo get de games tiene que filtrar
 const HTTP_PORT = 3000;
-
-const server = http.createServer((req, res) => {
-  const q = url.parse(req.url, true);
-  if (q.pathname === "/games") {
-    if (req.method === "GET") {
-      getAllGames(req, res);
-    } else if (req.method === "POST") {
-      addGame(req, res);
-    } else {
-      res.writeHead(404, "Ruta no encontrada");
-      res.end();
-    }
-  } else {
-    res.writeHead(404, "Ruta no encontrada");
-    res.end();
-  }
+const app = express();
+app.use(bodyParser.json());
+app.get("/games", (req, res) => {
+  getAllGames(req, res);
+});
+app.post("/games", (req, res) => {
+  addGame(req, res);
+});
+app.use((err, req, res, next) => {
+  res.status(400).send("metodo invalido");
 });
 
-server.listen(HTTP_PORT, () => {
+app.listen(HTTP_PORT, () => {
   console.log(`Servidor escuchando en puerto ${HTTP_PORT}`);
 });
