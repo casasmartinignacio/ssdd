@@ -1,5 +1,8 @@
 import { connect } from "mqtt";
-const client = connect("mqtt://localhost:1883");
+const client = connect("mqtt://localhost:1883", {
+  username: 'usuario1',
+  password: '44444'
+});
 
 client.on("connect", () => {
   client.subscribe("presence", (err) => {
